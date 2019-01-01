@@ -14,4 +14,8 @@ export class ProductService {
 
     return createItem.valueChanges();
   }
+
+  getAll(){
+    return this.db.list('/products').valueChanges();
+  }
 }
