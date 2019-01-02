@@ -9,6 +9,40 @@
     type="text" class="form-control" placeholder="Search..."> 
 </p>
 
+<!-- <data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+>
+    <data-table-colomn
+        [property]="'title'"
+        [header]="'Title'"
+        [sortable]="true"
+        [resizeable]="true"
+    >        
+    </data-table-colomn>
+
+    <data-table-colomn
+        [property]="'price'"
+        [header]="'Price'"
+        [sortable]="true"
+        [resizeable]="true"
+    >
+        <ng-template #dataTableCell let-item="product">
+            {{ product.price | currency:'USD':'symbol' }}
+        </ng-template>
+    </data-table-colomn>
+
+    <data-table-colomn
+        [property]="'key'"        
+    >
+        <ng-template #dataTableCell let-item="product">
+            <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+        </ng-template>
+    </data-table-colomn>
+
+</data-table>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,4 +60,35 @@
             </td>
         </tr>
     </tbody>
+</table> -->
+<table class="table table-striped" [mfData]="filteredProducts" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 20%">
+            <mfDefaultSorter by="title">Title</mfDefaultSorter>
+        </th>
+        <th style="width: 50%">
+            <mfDefaultSorter by="price">Price</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+        </th>
+       
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.title}}</td>
+        <td>{{item.price}}</td>
+        <td> 
+            <a [routerLink]="['/admin/products/', item.key]">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
 </table>
