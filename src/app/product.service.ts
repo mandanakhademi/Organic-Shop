@@ -7,6 +7,12 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
 
+  documentToDomainObject = _ => {
+    const object = _.payload.val();
+    object.key = _.payload.key;
+    return object;
+  }
+
   constructor( private db: AngularFireDatabase) { }
 
   create(product){
@@ -17,11 +23,8 @@ export class ProductService {
   }
 
   getAll(){
-    return this.db.list('/products').snapshotChanges().pipe(
-      map(actions => 
-        actions.map(a => ({ key: a.key, ...a.payload.val() }))
-      )
-    );
+    return this.db.list('/products').snapshotChanges()
+    .pipe(map(actions => actions.map(this.documentToDomainObject)));
   }
 
   get(productId){
