@@ -21,6 +21,10 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId);
   }
 
+  private getItem(cartId: string, productId: string){
+    return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+  }
+
 
   private async getOrCreateCartId(){
     let cartId = localStorage.getItem('cartId');
@@ -35,15 +39,14 @@ export class ShoppingCartService {
 
   async addToCart( product: Product){
     let cartId = await this.getOrCreateCartId();
-    let itemObject = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
+    let itemObject = this.getItem(cartId, product.key);
     itemObject.valueChanges().pipe(take<any>(1)).subscribe(item => {
-      if (item) itemObject.update({ quantity: item.quantity + 1});
-      else itemObject.set({ product: product, quantity: 1});
-
-      // let itemPromise = () => itemObject.valueChanges().pipe(take<any>(1)).toPromise();
-      // let item = await itemPromise();
-      // if (item) itemObject.update({ quantity: item.quantity + 1});
-      // else itemObject.set({ product: product, quantity: 1});
+    if (item) itemObject.update({ quantity: item.quantity + 1});
+    else itemObject.set({ product: product, quantity: 1});
+    // let itemPromise = () => itemObject.valueChanges().pipe(take<any>(1)).toPromise();
+    // let item = await itemPromise();
+    // if (item) itemObject.update({ quantity: item.quantity + 1});
+    // else itemObject.set({ product: product, quantity: 1});
 
     });
     
