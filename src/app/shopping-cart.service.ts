@@ -51,10 +51,14 @@ export class ShoppingCartService {
       // if (item) itemObject.update({ quantity: item.quantity + 1});
       // else itemObject.set({ product: product, quantity: 1});
 
-    });
-    
-    
-      
-    
+    });    
+  }
+
+  async removeFromCart(product: Product){
+    let cartId = await this.getOrCreateCartId();
+    let itemObject = this.getItem(cartId, product.key);
+    itemObject.valueChanges().pipe(take<any>(1)).subscribe(item => {
+      if (item) itemObject.update({ quantity: item.quantity - 1});
+    }); 
   }
 }
