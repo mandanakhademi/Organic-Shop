@@ -29,22 +29,6 @@ export class ShoppingCartService {
 
   }
 
-  private getItem(cartId: string, productId: string){
-    return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
-  }
-
-
-  private async getOrCreateCartId(): Promise<string>{
-    let cartId = localStorage.getItem('cartId');
-    if (cartId) return cartId;   
-    
-    let result = await this.create();
-    localStorage.setItem('cartId', result.key);
-    return result.key;     
-  }
-
-
-
   async addToCart( product: Product){
     let cartId = await this.getOrCreateCartId();
     let itemObject = this.getItem(cartId, product.key);
@@ -72,4 +56,23 @@ export class ShoppingCartService {
       if (item) itemObject.update({ quantity: item.quantity - 1});
     }); 
   }
+
+  async clearCart(){
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items/').remove();    
+  }
+
+  private getItem(cartId: string, productId: string){
+    return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+  }
+
+  private async getOrCreateCartId(): Promise<string>{
+    let cartId = localStorage.getItem('cartId');
+    if (cartId) return cartId;   
+    
+    let result = await this.create();
+    localStorage.setItem('cartId', result.key);
+    return result.key;     
+  }
+  
 }
