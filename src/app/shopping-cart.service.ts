@@ -53,7 +53,11 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     let itemObject = this.getItem(cartId, product.key);
     itemObject.valueChanges().pipe(take<any>(1)).subscribe(item => {
-      if (item) itemObject.update({ quantity: item.quantity - 1});
+      if (item) {
+        let quantity = item.quantity - 1;
+        if (quantity === 0) itemObject.remove();
+        else itemObject.update({ quantity: item.quantity - 1});
+      }
     }); 
   }
 
