@@ -11,13 +11,11 @@ export class ShoppingCart{
             let item: ShoppingCartItem = itemsMap[productId];
         
             this.items.push(new ShoppingCartItem(item.product, item.quantity));
-        }
-
-        
+        }        
     }
 
     getQuantity(product: Product){    
-      
+      console.log("product", product);
       let item = this.itemsMap[product.key];
       return item ? item.quantity: 0;      
     }  

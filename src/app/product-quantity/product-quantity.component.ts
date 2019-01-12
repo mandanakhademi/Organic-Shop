@@ -9,7 +9,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ProductQuantityComponent {
   @Input('product') product: Product;
-  @Input('shopping-cart') ShoppingCart;
+  @Input('shopping-cart') shoppingCart;
 
   constructor(private cartService: ShoppingCartService) { }
 
@@ -21,13 +21,5 @@ export class ProductQuantityComponent {
     this.cartService.removeFromCart(this.product);
   }
 
-  getQuantity(){
-    
-    if (!this.ShoppingCart) return 0;
-    
-    let item = this.ShoppingCart.itemsMap[this.product.key];
-    return item ? item.quantity: 0;
-    
-  }  
-
+  
 }

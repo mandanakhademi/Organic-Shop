@@ -11,7 +11,7 @@ import { ShoppingCart } from '../models/shopping-cart';
 export class ProductCardComponent {
   @Input('product') product: Product;
   @Input('show-actions') showActions: Boolean = true;
-  @Input('shopping-cart') ShoppingCart: ShoppingCart;
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
 
   constructor(private cartService: ShoppingCartService) { }
 
