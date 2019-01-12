@@ -25,7 +25,7 @@ export class ProductCardComponent {
   getQuantity(){
     
     if (!this.ShoppingCart) return 0;
-
+    
     let item = this.ShoppingCart.itemsMap[this.product.key];
     return item ? item.quantity: 0;
     
