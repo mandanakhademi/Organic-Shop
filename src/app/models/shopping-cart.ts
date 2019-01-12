@@ -9,11 +9,8 @@ export class ShoppingCart{
       this.itemsMap = itemsMap || {};
 
       for (let productId in itemsMap){
-        let item: ShoppingCartItem = itemsMap[productId];
-        let x = new ShoppingCartItem();
-        Object.assign(x, item);
-        x.key = productId;        
-        this.items.push(x);
+        let item: ShoppingCartItem = itemsMap[productId];                       
+        this.items.push(new ShoppingCartItem({ ...item, key: productId }));
       }        
     }
 
