@@ -1,5 +1,6 @@
 import { ShoppingCartItem } from './shopping-cart-item';
 import { count } from 'rxjs/operators';
+import { Product } from './product';
 
 export class ShoppingCart{
     public items: ShoppingCartItem[] = [];
@@ -14,6 +15,12 @@ export class ShoppingCart{
 
         
     }
+
+    getQuantity(product: Product){    
+      
+      let item = this.itemsMap[product.key];
+      return item ? item.quantity: 0;      
+    }  
 
     get totalPrice(){
       let sum = 0;     
