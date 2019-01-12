@@ -6,17 +6,21 @@ export class ShoppingCart{
     public items: ShoppingCartItem[] = [];
 
     constructor(public itemsMap: { [productId: string]: ShoppingCartItem}) {
-        
-        for (let productId in itemsMap){
-            let item: ShoppingCartItem = itemsMap[productId];
-        
-            this.items.push(new ShoppingCartItem(item.product, item.quantity));
-        }        
+      this.itemsMap = itemsMap || {};
+
+      for (let productId in itemsMap){
+        let item: ShoppingCartItem = itemsMap[productId];
+        let x = new ShoppingCartItem();
+        Object.assign(x, item);
+        x.key = productId;        
+        this.items.push(x);
+      }        
     }
 
-    getQuantity(product: Product){    
-      console.log("product", product);
+    getQuantity(product: Product){ 
       let item = this.itemsMap[product.key];
+      // console.log("getQuantity" + item.quantity);   
+
       return item ? item.quantity: 0;      
     }  
 

@@ -50,7 +50,12 @@ export class ShoppingCartService {
     let itemObject = this.getItem(cartId, product.key);
     itemObject.valueChanges().pipe(take<any>(1)).subscribe(item => {
       if (item) itemObject.update({ quantity: item.quantity + 1});
-      else itemObject.set({ product: product, quantity: 1});
+      else itemObject.set({ 
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        quantity: 1
+      });
       
       // let itemPromise = () => itemObject.valueChanges().pipe(take<any>(1)).toPromise();
       // let item = await itemPromise();
