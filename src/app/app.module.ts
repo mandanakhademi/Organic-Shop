@@ -11,10 +11,10 @@ import { environment } from 'environments/environment';
 import { CustomFormsModule } from 'ng2-validation';
 import { AuthGuard } from 'shared/services/auth-guard.service';
 
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -29,6 +29,7 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SharedModule } from 'shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -40,10 +41,8 @@ import { SharedModule } from 'shared/shared.module';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
+    
     LoginComponent,
-    ProductFormComponent,
     ProductsFilterComponent,
     
     ShoppingCartSummaryComponent,
@@ -52,6 +51,7 @@ import { SharedModule } from 'shared/shared.module';
   imports: [
     BrowserModule,
     SharedModule,
+    AdminModule,
     FormsModule,
     CustomFormsModule,
     DataTableModule,
@@ -88,8 +88,7 @@ import { SharedModule } from 'shared/shared.module';
 
     ])
   ],
-  providers: [
-    AdminAuthGuard    
+  providers: [        
   ],
   bootstrap: [AppComponent]
 })
