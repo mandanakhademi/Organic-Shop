@@ -18,40 +18,33 @@ import { ProductFormComponent } from './admin/components/product-form/product-fo
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { CheckOutComponent } from './check-out/check-out.component';
+import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
-import { ProductsComponent } from './products/products.component';
-import { ShippingFormComponent } from './shipping-form/shipping-form.component';
-import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
+import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
+import { ProductsFilterComponent } from './shopping/components/products/products-filter/products-filter.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
+import { ShippingFormComponent } from './shopping/components/shipping-form/shipping-form.component';
+import { ShoppingCartSummaryComponent } from './shopping/components/shopping-cart-summary/shopping-cart-summary.component';
+import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
 import { SharedModule } from 'shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     BsNavbarComponent,
-    HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    
+    HomeComponent,    
     LoginComponent,
-    ProductsFilterComponent,
     
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AdminModule,
+    ShoppingModule,
     FormsModule,
     CustomFormsModule,
     DataTableModule,
@@ -61,31 +54,9 @@ import { AdminModule } from './admin/admin.module';
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path:'', component: ProductsComponent },
-      { path:'products', component: ProductsComponent },
-      { path:'shopping-cart', component: ShoppingCartComponent },
+      { path:'', component: ProductsComponent },      
       { path:'login', component: LoginComponent },
-
-      { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-            
-      { path:'admin/products/new', 
-      component: ProductFormComponent, 
-      canActivate: [AuthGuard, AdminAuthGuard] },
-
-      { path:'admin/products/:id', 
-      component: ProductFormComponent, 
-      canActivate: [AuthGuard, AdminAuthGuard] },
-
-      { path:'admin/products', 
-      component: AdminProductsComponent, 
-      canActivate: [AuthGuard, AdminAuthGuard] },
-
-      { path:'admin/orders', 
-      component: AdminOrdersComponent, 
-      canActivate: [AuthGuard, AdminAuthGuard] }
-
+      
     ])
   ],
   providers: [        
