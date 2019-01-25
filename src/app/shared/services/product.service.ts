@@ -15,27 +15,27 @@ export class ProductService {
 
   constructor( private db: AngularFireDatabase) { }
 
-  create(product){
-    var createItem :AngularFireList<any> = this.db.list('/products');
+  create(product) {
+    const createItem: AngularFireList<any> = this.db.list('/products');
     createItem.push(product);
 
     return createItem.valueChanges();
   }
 
-  getAll(){
+  getAll() {
     return this.db.list('/products').snapshotChanges()
     .pipe(map(actions => actions.map(this.documentToDomainObject)));
   }
 
-  get(productId){
+  get(productId) {
     return this.db.object('/products/' + productId).valueChanges();
   }
 
-  update(productId, product){
+  update(productId, product) {
     return this.db.object('/products/' + productId).update(product);
   }
 
-  delete(productId){
+  delete(productId) {
     return this.db.object('/products/' + productId).remove();
   }
 }

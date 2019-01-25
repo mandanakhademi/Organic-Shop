@@ -4,6 +4,7 @@ import { OrderService } from 'shared/services/order.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'my-orders',
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
@@ -15,8 +16,8 @@ export class MyOrdersComponent {
     private authService: AuthService,
     private orderService: OrderService) {
       this.orders$ = this.authService.user$.pipe(switchMap(u => this.orderService.getOrdersByUser(u.uid).valueChanges()));
-       
+
 
   }
-  
+
 }

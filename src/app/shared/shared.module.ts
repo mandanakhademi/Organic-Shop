@@ -18,11 +18,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  
+
   declarations: [
     ProductCardComponent,
     ProductQuantityComponent,
-  ],  
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -52,6 +52,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShoppingCartService,
     OrderService
   ]
-  
+
 })
 export class SharedModule { }

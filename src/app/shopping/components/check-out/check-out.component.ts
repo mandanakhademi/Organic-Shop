@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class CheckOutComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
-  
+
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
@@ -19,5 +19,5 @@ export class CheckOutComponent implements OnInit {
     this.cart$ = await this.shoppingCartService.getCart();
   }
 
-  
+
 }

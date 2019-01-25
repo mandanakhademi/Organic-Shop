@@ -14,24 +14,24 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
 import { SharedModule } from 'shared/shared.module';
 
 @NgModule({
-  declarations: [    
+  declarations: [
     ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
     OrderSuccessComponent,
-    MyOrdersComponent,    
-    ProductsFilterComponent,    
+    MyOrdersComponent,
+    ProductsFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent
   ],
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path:'products', component: ProductsComponent },
-      { path:'shopping-cart', component: ShoppingCartComponent },
-      { path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },    
+      { path: 'products', component: ProductsComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
     ])
   ]

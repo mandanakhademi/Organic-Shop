@@ -9,9 +9,9 @@ import { SharedModule } from 'shared/shared.module';
 @NgModule({
   declarations: [
     BsNavbarComponent,
-    HomeComponent,    
+    HomeComponent,
     LoginComponent,
-    
+
   ],
   imports: [
     SharedModule,

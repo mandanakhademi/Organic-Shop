@@ -16,23 +16,23 @@ import { ShoppingModule } from './shopping/shopping.module';
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AdminModule,
     ShoppingModule,
-    CoreModule,    
+    CoreModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),    
+    AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
-      { path:'', component: ProductsComponent },      
-      { path:'login', component: LoginComponent },
-      
+      { path: '', component: ProductsComponent },
+      { path: 'login', component: LoginComponent },
+
     ])
   ],
-  providers: [        
+  providers: [
   ],
   bootstrap: [AppComponent]
 })

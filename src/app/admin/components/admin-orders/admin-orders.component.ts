@@ -9,7 +9,7 @@ import { OrderService } from 'shared/services/order.service';
 export class AdminOrdersComponent implements OnInit {
   orders$;
 
-  constructor( private orderService: OrderService ) { 
+  constructor( private orderService: OrderService ) {
     this.orders$ = this.orderService.getOrders().valueChanges();
   }
 

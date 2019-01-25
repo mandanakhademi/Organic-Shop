@@ -9,17 +9,19 @@ import { Shipping } from 'shared/models/shipping';
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
+  // tslint:disable-next-line:no-input-rename
   @Input ('cart') cart: ShoppingCart;
   shipping: Shipping = new Shipping();
   userSubscription: Subscription;
   userId: string;
 
-  constructor( 
+  constructor(
     private router: Router,
     private authService: AuthService,
     private orderService: OrderService) { }
@@ -27,14 +29,14 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSubscription = this.authService.user$.subscribe( user => this.userId = user.uid);
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
 
 
-  async placeOrder(){
-    let order = new Order( this.userId, this.shipping, this.cart);    
-    let result = await this.orderService.placeOrder(order);
+  async placeOrder() {
+    const order = new Order( this.userId, this.shipping, this.cart);
+    const result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   }
 

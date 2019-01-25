@@ -7,6 +7,7 @@ import { ShoppingCart } from 'shared/models/shopping-cart';
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
@@ -15,15 +16,15 @@ export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
   cart$;
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
-    
+
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.shoppingCartService.getCart();    
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
-  logout(){
+  logout() {
     this.auth.logout();
   }
 
