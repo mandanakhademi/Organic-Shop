@@ -5,6 +5,8 @@ import { AuthService } from 'shared/services/auth.service';
 import { OrderService } from 'shared/services/order.service';
 import { Order } from 'shared/models/order';
 import { ShoppingCart } from 'shared/models/shopping-cart';
+import { Shipping } from 'shared/models/shipping';
+
 
 @Component({
   selector: 'shipping-form',
@@ -13,7 +15,7 @@ import { ShoppingCart } from 'shared/models/shopping-cart';
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input ('cart') cart: ShoppingCart;
-  shipping = {};
+  shipping: Shipping = new Shipping();
   userSubscription: Subscription;
   userId: string;
 
