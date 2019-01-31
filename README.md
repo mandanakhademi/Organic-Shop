@@ -4,8 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo website
 
-Open demo website on [Github Pages](https://mandanakhademi.github.io/Organic-Shop/).
-Open demo website on [Firebase](https://organic-shop-83fb7.firebaseapp.com/).
+Demo website:
+ * [Github Pages](https://mandanakhademi.github.io/Organic-Shop/)
+ * [Firebase](https://organic-shop-83fb7.firebaseapp.com/)
+ * [Heroku](https://organic-shop-92323.herokuapp.com/)
 
 
 ## Development server
